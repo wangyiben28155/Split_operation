@@ -49,7 +49,7 @@ function calculation(P::Parameter, Wave::wave_function, fig::visualization)
         #generate_Animi(fig)
         #println("The animation is stored in you program directory.")
     else
-        return println("The time is not in real space.")
+        return throw(DomainError("The time is not a real number"))
     end
 
 end
