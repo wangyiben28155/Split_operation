@@ -51,7 +51,7 @@ function ITR(P::Parameter, Wave::wave_function)
         println("迭代次数:$(count),虚时间$(Wave.Time)")
 
     else
-        return  throw(DomainError("The time is not a imaginary number"))
+        return  @error "the Time shold be a imaginary number"
     end
 end
 
