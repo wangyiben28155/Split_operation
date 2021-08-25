@@ -1,3 +1,4 @@
+module RunHHg
 include("Main_module.jl"); using .Mystruct      #这个文件是用来直接计算高次谐波的, 主要求解演化过后的波函数的概率密度,以及随时间的加速度,以及我们关系的高次谐波
 using CSV, DataFrames                           #用来读取数据
 
@@ -10,3 +11,4 @@ Wave.real_space = @. real(parse(Complex{Float64}, df.wave))    #读取过程的�
 
 
 calculation(P, Wave, gif)
+end
