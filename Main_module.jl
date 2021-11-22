@@ -24,7 +24,6 @@ module Mystruct
         Step_t::Int64 = step_t    
         sampling :: Vector{T} = collect(LinRange(-scope, scope, N))    
         frequency_space :: Vector{T} = 1/(2*scope) * collect(LinRange(-N/2, N/2-1, N))
- 
     end   
 
 
