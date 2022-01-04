@@ -2,7 +2,7 @@ module RunHHg
 include("Main_module.jl"); using .Mystruct      #这个文件是用来直接计算高次谐波的, 主要求解演化过后的波函数的概率密度,以及随时间的加速度,以及我们关系的高次谐波
 using CSV, DataFrames                           #用来读取数据
 
-df = CSV.read("Ground_state.csv", DataFrame)    #加载基态波函数,之后会自动计算动量空间的波函数
+df = CSV.read("Ground_Wave_Func.csv", DataFrame)    #加载基态波函数,之后会自动计算动量空间的波函数
 
 P = Parameter()        #初始化三个数据结构
 gif = visualization()

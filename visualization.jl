@@ -86,7 +86,7 @@ end
 
 
 function plot_Ground()
-    local df = CSV.read("Ground_state.csv", DataFrame)
+    local df = CSV.read("Ground_Wave_Func.csv", DataFrame)
 
     df.wave =@. real(parse(Complex{Float64}, df.wave))
 

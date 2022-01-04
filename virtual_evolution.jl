@@ -14,7 +14,7 @@ function record(P::Parameter, Wave::wave_function)                              
 
     df.x = P.sampling
     df.wave = Wave.real_space 
-    CSV.write("Ground_state.csv", df)
+    CSV.write("Ground_Wave_Func.csv", df)
 end
 
 function ITR(P::Parameter, Wave::wave_function)
