@@ -8,10 +8,10 @@ import ..Mystruct.Potential_Matrix.V_0
 import ..Mystruct.Potential_Matrix.E
 
 
-using NumericalIntergration
+using NumericalIntegration
 
 
-function Normalization(P::Parameter, Wave::wave_function)
+@inline function Normalization(P::Parameter, Wave::wave_function)
     return sqrt.(integrate(P.sampling, abs2.(Wave.real_space), SimpsonEven()))
 end
 
