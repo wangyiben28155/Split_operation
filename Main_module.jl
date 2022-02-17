@@ -27,7 +27,7 @@ end
     frequency_space::Vector{T} = 1 / (2 * scope) * collect(LinRange(-N / 2, N / 2 - 1, N))
 end
 
-
+include("Numerical_Diff_DiscreteFunc.jl")
 include("Potential.jl")                                        #注意这里文件插入的顺序也是有关的,后面的文件对应模块能调用前面的,而前面的
 include("Resolution.jl")                                #不能调用后面的模块,所以尽量把比较基本的模块写在前面比较好
 include("visualization.jl")
@@ -37,5 +37,5 @@ include("virtual_evolution.jl")                                       #计算迭
 
 
 using .Potential_Matrix, .Resolution, .visual, .Calculation,            #这里using也是为了在模块的顶端可以export,对其它无影响
-    .physical_quantity, .Ground_state
+    .physical_quantity, .Ground_state, .Discrete_Func_diff
 end
