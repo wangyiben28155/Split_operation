@@ -90,7 +90,7 @@ function plot_Ground()
 
     df.wave =@. real(parse(Complex{Float64}, df.wave))
 
-    plot(df.x, df.wave, color="black")
+    plot(df.x, abs2.(df.wave), color="black")
     grid()
     title("Ground state of wave function")
     xlabel("x")
