@@ -6,7 +6,7 @@ export wave_function, Parameter, plot_real, plot_momentum, plot_HHG, plot_Ground
 using Distributions
 import Base.@kwdef
 
-const L, x_num, step_t = (200.0, 20001, 13001)
+const L, x_num, step_t = (200.0, 20001, 13000)
 const Δt = -0.05im
 
 @kwdef mutable struct wave_function{T<:AbstractFloat}      #用来计算迭代的参数
@@ -14,6 +14,7 @@ const Δt = -0.05im
     momentum_space::Vector{Complex{T}} = zeros(eltype(real_space), length(real_space))
     Time_dipole::Vector{T} = zeros(Float64, step_t)
     Time::Union{T,Complex{T}} = 0.0
+    Population::Matrix{T} = zeros(Complex{T}, (x_num, step_t+1))
 end
 
 
