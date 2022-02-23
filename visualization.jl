@@ -2,23 +2,16 @@ module visual                                    #注意现在程序的可视化
 
 export plot_real, plot_momentum, plot_HHG, plot_Ground, visualization, generate_Animi, plot_probability    #HHG之后还可以用来读取完数据之后画图.
 
-using ..Mystruct
-using PyCall, PyPlot, FFTW, CSV, DataFrames
-Snap = pyimport("celluloid")
-import ..Mystruct.Potential_Matrix.ω_0
+using ..TDSE
+using PyPlot, FFTW, CSV, DataFrames
+
+import ..TDSE.Potential_Matrix.ω_0
 
 const T = 2pi/ω_0
 
-Base.@kwdef mutable struct visualization         #用来可视化的参数,这里因为只有在这里用到,干脆就直接定义在这里了,其它计算部分导入
-    Canvas:: Figure = figure()                   #该部分会比较浪费时间了,而且对于包引用也比较方便一些,如果定义在Varible_initial里还需要在其中引入
-    shoot:: PyObject = Snap.Camera(Canvas)       #上面的三个包的导入也很麻烦,这里Camera相当于把对应的函数的对象设定为Canvas
-    Animi:: PyObject = shoot.animate()
-end
-
                                                                          #可以在其它部分导入模块后定义两个上面的结构,一个画实空间,一个画动量空间
-
-function plot_real(P::Parameter, Wave::wave_function, fig::visualization)
-    plot(P.sampling, real.(Wave.real_space),  
+function plot_real(P::Parameter, Wave::wave_function)
+    plot(P.sampling, abs2.(Wave.real_space),  
     color="teal")
     grid()
     ylabel("amplitude") 
@@ -41,24 +34,14 @@ function plot_probability(P::Parameter)
 
 end
 
-function plot_momentum(P::Parameter, Wave::wave_function, fig::visualization)
+function plot_momentum(P::Parameter, Wave::wave_function)
     plot(P.frequency_space, 2 * abs.(Wave.momentum_space)./P.N ,         #这里有改进空间, 可以把第一个变量放到P中,不用每次画图都计算一遍
     color="indigo")
     grid()
     title("Momentum space")
     xlabel("Momentum")
     ylabel("amplitude") 
-    #title("Momentum space wave function")
-    #xlim(-5,5)
-    fig.shoot.snap()
-    
 end
-
-function generate_Animi(fig::visualization)
-    fig.Animi = fig.shoot.animate()
-    fig.Animi.save("Time_Wave_resolution.gif",writer="pillow")
-end
-
 
 function plot_HHG()
     local df = CSV.read("High_Harmonic_Generation.csv", DataFrame)

@@ -2,7 +2,7 @@ module Potential_Matrix                                                  #根据
 
 export V_Matrix, T_Matrix, V_0_Matrix
 
-using ..Mystruct
+using ..TDSE
 using SparseArrays
 
 const ω_0 = 0.148

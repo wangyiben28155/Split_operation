@@ -1,6 +1,6 @@
-module Mystruct
-export wave_function, Parameter, plot_real, plot_momentum, plot_HHG, plot_Ground, plot_probability,         #原则:struct是用来方便传参的.并且为了接口的统一性,这里在这个主模块内部引入其它模块方便调用
-    generate_Animi, V_Matrix, T_Matrix, positive_fft!, inverse_fft!, calculation, visualization, ITR            #大模块输出的部分,可以给小模块,也可以给外部调用
+module TDSE
+export wave_function, Parameter, plot_real, plot_momentum, plot_HHG, plot_Ground, plot_probability, 
+    V_Matrix, T_Matrix, positive_fft!, inverse_fft!, Calculation!, visualization, ITR!            #大模块输出的部分,可以给小模块,也可以给外部调用
 
 
 using Distributions

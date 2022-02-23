@@ -2,10 +2,10 @@ module physical_quantity
 
 export quantity_a, eigen_energy, Normalization
 
-using ..Mystruct
-using ..Mystruct.Discrete_Func_diff
-import ..Mystruct.Potential_Matrix.V_0
-import ..Mystruct.Potential_Matrix.E
+using ..TDSE
+using ..TDSE.Discrete_Func_diff
+import ..TDSE.Potential_Matrix.V_0
+import ..TDSE.Potential_Matrix.E
 
 
 using NumericalIntegration
